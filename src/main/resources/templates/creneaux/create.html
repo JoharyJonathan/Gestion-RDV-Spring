@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Créer un nouveau Creneaux</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/popper.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Gestion de rendez-vous</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/rdv}">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/creneaux}">Listes des Creneaux</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/medecins}">Listes des medecins</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" th:href="@{/patients}" tabindex="-1" aria-disabled="true">Liste des patients</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>Créer un nouveau Creneaux</h1>
+        <form th:action="@{/creneaux}" th:object="${creneaux}" method="post" class="card-body">
+            <div class="form-group">
+                <label for="hdebut">Heure Début:</label>
+                <input type="number" id="hdebut" name="hdebut" th:field="*{hdebut}" />
+            </div>
+
+            <div class="form-group">
+                <label for="mdebut">Minute Début:</label>
+                <input type="number" id="mdebut" name="mdebut" th:field="*{mdebut}" />
+            </div>
+
+            <div class="form-group">
+                <label for="hfin">Heure Fin:</label>
+                <input type="number" id="hfin" name="hfin" th:field="*{hfin}" />
+            </div>
+
+            <div class="form-group">
+                <label for="mfin">Minute Fin:</label>
+                <input type="number" id="mfin" name="mfin" th:field="*{mfin}" />
+            </div>
+
+            <div class="form-group">
+                <label for="medecin">Médecin:</label>
+                <select id="medecin" name="medecin" th:field="*{medecin.id}">
+                    <option th:each="medecin : ${medecins}" th:value="${medecin.id}" th:text="${medecin.nom}">Médecin</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-secondary">Créer</button>
+        </form>
+        <a th:href="@{/creneaux}" class="btn btn-primary my-4">Retour à la liste</a>
+    </div>
+</body>
+</html>

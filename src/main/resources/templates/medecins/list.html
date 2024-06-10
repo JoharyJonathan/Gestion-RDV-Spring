@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Liste des Médecins</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/popper.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Gestion de rendez-vous</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/rdv}">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/creneaux}">Listes des Creneaux</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/medecins}">Listes des medecins</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" th:href="@{/patients}" tabindex="-1" aria-disabled="true">Liste des patients</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <h1 class="my-3">Liste des Médecins</h1>
+        <a href="/medecins/create" class="btn btn-primary mb-3">Créer un nouveau médecin</a>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Titre</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="medecin : ${medecins}">
+                    <td th:text="${medecin.id}">1</td>
+                    <td th:text="${medecin.titre}">Titre</td>
+                    <td th:text="${medecin.nom}">Nom</td>
+                    <td th:text="${medecin.prenom}">Prénom</td>
+                    <td class="row">
+                        <a th:href="@{/medecins/{id}(id=${medecin.id})}" class="btn btn-secondary btn-sm mx-2">Détails</a>
+                        <a th:href="@{/medecins/edit/{id}(id=${medecin.id})}" class="btn btn-warning btn-sm mx-2">Éditer</a>
+                        <form th:action="@{/medecins/delete/{id}(id=${medecin.id})}" method="post" class="mx-2">
+                            <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
