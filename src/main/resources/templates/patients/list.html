@@ -36,22 +36,22 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>ID</th>
                     <th>Nom</th>
                     <th>Prénom</th>
                     <th>Email</th>
                     <th>Date de naissance</th>
+                    <th>Genre</th>
                     <th>titre</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 <tr th:each="patient : ${patients}">
-                    <td th:text="${patient.id}">1</td>
                     <td th:text="${patient.nom}">Nom</td>
                     <td th:text="${patient.prenom}">Prénom</td>
                     <td th:text="${patient.email}">Email</td>
                     <td th:text="${patient.dateDeNaissance}">Date de naissance</td>
+                    <td th:text="${patient.genre}">Genre</td>
                     <td th:text="${patient.titre}">Titre</td>
                     <td class="row">
                         <a th:href="@{/patients/{id}(id=${patient.id})}" class="btn btn-secondary btn-sm mx-2">Détails</a>

@@ -55,7 +55,10 @@
 
             <div class="form-group">
                 <label for="genre">Genre:</label>
-                <input type="text" id="genre" name="genre" th:field="*{genre}" />
+                <select id="genre" name="genre" th:field="*{genre}">
+                    <option th:value="Male" th:text="Male">Male</option>
+                    <option th:value="Female" th:text="Female">Female</option>
+                </select>
             </div>
 
             <div class="form-group">
