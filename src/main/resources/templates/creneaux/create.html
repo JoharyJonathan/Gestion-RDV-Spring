@@ -35,28 +35,28 @@
         <form th:action="@{/creneaux}" th:object="${creneaux}" method="post" class="card-body">
             <div class="form-group">
                 <label for="hdebut">Heure Début:</label>
-                <input type="number" id="hdebut" name="hdebut" th:field="*{hdebut}" />
+                <input type="number" id="hdebut" name="hdebut" th:field="*{hdebut}" min="1" max="23"/>
             </div>
 
             <div class="form-group">
                 <label for="mdebut">Minute Début:</label>
-                <input type="number" id="mdebut" name="mdebut" th:field="*{mdebut}" />
+                <input type="number" id="mdebut" name="mdebut" th:field="*{mdebut}" min="0" max="59"/>
             </div>
 
             <div class="form-group">
                 <label for="hfin">Heure Fin:</label>
-                <input type="number" id="hfin" name="hfin" th:field="*{hfin}" />
+                <input type="number" id="hfin" name="hfin" th:field="*{hfin}" min="1" max="23"/>
             </div>
 
             <div class="form-group">
                 <label for="mfin">Minute Fin:</label>
-                <input type="number" id="mfin" name="mfin" th:field="*{mfin}" />
+                <input type="number" id="mfin" name="mfin" th:field="*{mfin}" min="0" max="59"/>
             </div>
 
             <div class="form-group">
                 <label for="medecin">Médecin:</label>
                 <select id="medecin" name="medecin" th:field="*{medecin.id}">
-                    <option th:each="medecin : ${medecins}" th:value="${medecin.id}" th:text="${medecin.nom}">Médecin</option>
+                    <option th:each="medecin : ${medecins}" th:value="${medecin.id}" th:text="${medecin.nom} + ' ' + ${medecin.prenom}">Médecin</option>
                 </select>
             </div>
 

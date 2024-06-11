@@ -36,7 +36,6 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>ID</th>
                     <th>Titre</th>
                     <th>Nom</th>
                     <th>Prénom</th>
@@ -45,7 +44,6 @@
             </thead>
             <tbody>
                 <tr th:each="medecin : ${medecins}">
-                    <td th:text="${medecin.id}">1</td>
                     <td th:text="${medecin.titre}">Titre</td>
                     <td th:text="${medecin.nom}">Nom</td>
                     <td th:text="${medecin.prenom}">Prénom</td>

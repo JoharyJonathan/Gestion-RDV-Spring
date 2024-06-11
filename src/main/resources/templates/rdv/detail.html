@@ -32,9 +32,8 @@
     </nav>
     <div class="container">
         <h1 class="my-3">Détails du Rendez-vous</h1>
-        <p>ID: <span th:text="${rv.id}">1</span></p>
         <p>Jour: <span th:text="${rv.jour}">Jour</span></p>
-        <p>Patient: <span th:text="${rv.patient.nom}">Patient</span></p>
+        <p>Patient: <span th:text="${rv.patient.nom} + ' ' + ${rv.patient.prenom}">Patient</span></p>
         <p>Créneau: <span th:text="'De ' + ${rv.creneau.hdebut} + 'h' + ${rv.creneau.mdebut} + 'mn a ' + ${rv.creneau.hfin} + 'h' + ${rv.creneau.mfin} + 'mn avec le ' + ${rv.creneau.medecin.titre} + ' ' + ${rv.creneau.medecin.nom} + ' ' + ${rv.creneau.medecin.prenom}">Créneau</span></p>
         <a th:href="@{/rdv}" class="btn btn-primary my-3">Retour à la liste</a>
     </div>

@@ -36,7 +36,6 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>ID</th>
                     <th>Heure Début</th>
                     <th>Minute Début</th>
                     <th>Heure Fin</th>
@@ -47,12 +46,11 @@
             </thead>
             <tbody>
                 <tr th:each="creneaux : ${creneaux}">
-                    <td th:text="${creneaux.id}">1</td>
                     <td th:text="${creneaux.hdebut}">H début</td>
                     <td th:text="${creneaux.mdebut}">M début</td>
                     <td th:text="${creneaux.hfin}">H fin</td>
                     <td th:text="${creneaux.mfin}">M fin</td>
-                    <td th:text="${creneaux.medecin.nom}">Médecin</td>
+                    <td th:text="${creneaux.medecin.nom} + ' ' + ${creneaux.medecin.prenom}">Médecin</td>
                     <td class="row">
                         <a th:href="@{/creneaux/{id}(id=${creneaux.id})}" class="btn btn-secondary btn-sm mx-2">Détails</a>
                         <a th:href="@{/creneaux/edit/{id}(id=${creneaux.id})}" class="btn btn-warning btn-sm mx-2">Éditer</a>
