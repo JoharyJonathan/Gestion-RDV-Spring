@@ -25,6 +25,9 @@ public class CreneauService {
 
     public Creneaux saveCreneaux(Creneaux creneau)
     {
+        if (isCreneauxDuplicate(creneau)) {
+            throw new IllegalArgumentException("Ce creneau existe deja !!!");
+        }
         return creneauRepository.save(creneau);
     }
 
@@ -41,5 +44,20 @@ public class CreneauService {
     public void deleteCreneaux(Long id)
     {
         creneauRepository.deleteById(id);
+    }
+
+    public boolean isCreneauxDuplicate(Creneaux newCreneaux)
+    {
+        List<Creneaux> existingCreneauxs = creneauRepository.findByMedecinId(newCreneaux.getMedecin().getId());
+        for (Creneaux creneaux : existingCreneauxs)
+        {
+            if (newCreneaux.getHdebut() == creneaux.getHdebut() &&
+                newCreneaux.getMdebut() == creneaux.getMdebut() &&
+                newCreneaux.getHfin() == creneaux.getHfin() &&
+                newCreneaux.getMfin() == creneaux.getMfin()) {
+                return true;
+            }
+        }
+        return false;
     }
 }
